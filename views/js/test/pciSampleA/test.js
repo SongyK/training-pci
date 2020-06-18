@@ -70,8 +70,8 @@ define([
     /**
      * Test if all rendering elements are in place
      */
-    QUnit.test('renders correctly', function (assert) {
-        var ready = assert.async();
+    QUnit.asyncTest('renders correctly', function (assert) {
+        //var ready = assert.async();
         var $container = $('#' + fixtureContainerId);
         assert.equal($container.length, 1, 'the item container exists');
         assert.equal($container.children().length, 0, 'the container has no children');
@@ -87,8 +87,8 @@ define([
                     assert.equal($container.find('.qti-interaction.qti-customInteraction').length, 3, 'the container contains 3 custom interactions');
                     assert.equal($container.find('.qti-customInteraction .pciSampleA').length, 3, 'the container contains 3 likert interactions');
                     assert.equal($container.find('.qti-customInteraction .prompt').length, 3, 'the interaction contains 3 prompts');
-
-                    ready();
+                    QUnit.start();
+                    //ready();
                     runner.clear();
                 })
                 .on('error', function (error) {
@@ -102,8 +102,8 @@ define([
     /**
      * Test test taker interaction and the obtained response
      */
-    QUnit.test('response', function (assert) {
-        var ready = assert.async();
+    QUnit.asyncTest('response', function (assert) {
+        //var ready = assert.async();
         var $container = $('#' + outerContainerId);
         assert.equal($container.length, 1, 'the item container exists');
         assert.equal($container.children().length, 0, 'the container has no children');
@@ -140,8 +140,8 @@ define([
                                 }
                             }
                         }, 'state ok');
-
-                        ready();
+                        QUnit.start();
+                        // ready();
                         runner.clear();
                     });
                 })
@@ -156,8 +156,8 @@ define([
     /**
      * Test the state recovery, essential behaviour when navigating the test flow
      */
-    QUnit.test('state', function (assert) {
-        var ready = assert.async();
+    QUnit.asyncTest('state', function (assert) {
+        //var ready = assert.async();
         var $container = $('#' + fixtureContainerId);
         assert.equal($container.length, 1, 'the item container exists');
         assert.equal($container.children().length, 0, 'the container has no children');
@@ -184,8 +184,8 @@ define([
                             likert2: {response: {base: {integer: 3}}},
                             likert3: {response: {base: {integer: 0}}},
                         }, 'state ok');
-
-                        ready();
+                        QUnit.start();
+                        //ready();
                         runner.clear();
                     }, 100);
                 })
@@ -200,8 +200,8 @@ define([
     /**
      * Offer a way to visually test the interaction
      */
-    QUnit.test('display and play', function (assert) {
-        var ready = assert.async();
+    QUnit.asyncTest('display and play', function (assert) {
+        //var ready = assert.async();
         var $container = $('#' + outerContainerId);
         assert.equal($container.length, 1, 'the item container exists');
         assert.equal($container.children().length, 0, 'the container has no children');
@@ -214,7 +214,8 @@ define([
                         likert1: {response: {base: {integer: 1}}},
                         likert2: {response: {base: {integer: 3}}}
                     });
-                    ready();
+                    QUnit.start();
+                    // ready();
                 })
                 .on('error', function (error) {
                     $('#error-display').html(error);
